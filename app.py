@@ -8,6 +8,10 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 
+@app.route("/")
+def home():
+    return "Welcome to the Parkinson Disease Prediction API!"
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json(force=True)
